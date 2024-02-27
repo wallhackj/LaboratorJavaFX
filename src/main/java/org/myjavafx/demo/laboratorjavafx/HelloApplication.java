@@ -1,8 +1,6 @@
 package org.myjavafx.demo.laboratorjavafx;
 
-import javafx.animation.Animation;
-import javafx.animation.KeyFrame;
-import javafx.animation.Timeline;
+import javafx.animation.*;
 import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
@@ -55,11 +53,22 @@ public class HelloApplication extends Application {
         primaryStage.setScene(scene);
         primaryStage.show();
 
+        TranslateTransition transition = new TranslateTransition(Duration.seconds(randomDelay), root);
+        RotateTransition rotate = new RotateTransition(Duration.seconds(randomDelay), root);
+
+        transition.setFromX(randomDelay);
+        transition.setToX(random.nextInt(200 - 50 + 1) + 50);
+        transition.setFromY(randomDelay);
+        transition.setToY(random.nextInt(200 - 50 + 1) + 50);
+        rotate.setByAngle(random.nextInt(200 - 50 + 1) + 50);
+        transition.setCycleCount(Animation.INDEFINITE);
+        transition.setAutoReverse(true);
+        transition.play();
+        rotate.play();
 
         timeline.setCycleCount(Animation.INDEFINITE);
         timeline.getKeyFrames().
                 add(new KeyFrame(Duration.seconds(randomDelay), event -> displayRandomImage(root)));
-
         timeline.play();
     }
 
