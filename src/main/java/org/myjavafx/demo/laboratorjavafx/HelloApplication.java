@@ -67,8 +67,8 @@ public class HelloApplication extends Application {
         rotate.play();
 
         timeline.setCycleCount(Animation.INDEFINITE);
-        timeline.getKeyFrames().
-                add(new KeyFrame(Duration.seconds(randomDelay), event -> displayRandomImage(root)));
+        timeline.getKeyFrames()
+                .add(new KeyFrame(Duration.seconds(randomDelay), event -> displayRandomImage(root)));
         timeline.play();
     }
 
